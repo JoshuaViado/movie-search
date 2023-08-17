@@ -1,5 +1,8 @@
 // ./main.ts
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-bootstrapApplication(AppComponent).catch((e) => console.error(e));
+bootstrapApplication(AppComponent, {
+    providers: [provideAnimations()]
+}).catch((e) => console.error(e));
