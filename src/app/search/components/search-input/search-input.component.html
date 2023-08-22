@@ -1,9 +1,9 @@
-<mat-form-field class="example-form-field">
-  <mat-label>Search Movie Title</mat-label>
+<mat-form-field>
   <input
     matInput
     type="text"
     [(ngModel)]="value"
+    [placeholder]="'Search Movie Title'"
     (keydown.enter)="searchMovie(value)"
   />
   <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear">

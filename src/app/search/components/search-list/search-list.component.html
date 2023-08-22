@@ -1,1 +1,5 @@
-<p>search-list works!</p>
+<mat-grid-list cols="5" rowHeight="0.8:1" class="m-4">
+  <mat-grid-tile *ngFor="let movie of movieList" class="p-4">
+    <img [src]="movie.img_poster" [alt]="movie.aka + ' poster'" class="p-4" />
+  </mat-grid-tile>
+</mat-grid-list>
