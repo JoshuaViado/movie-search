@@ -1,0 +1,22 @@
+<div class="flex w-full">
+  <img
+    [src]="movie.img_poster"
+    [alt]="movie.aka + ' poster'"
+    class="p-4 h-80 w-60 rounded-3xl drop-shadow-2xl cursor-pointer"
+  />
+  <div class="m-4 pt-8 w-80">
+    <p class="text-4xl font-extrabold">
+      {{ movie.title }}
+    </p>
+
+    <p>Actors: {{ movie.actors }}</p>
+    <p>Year Released: {{ movie.year }}</p>
+    <a class="cursor-pointer" [href]="movie.imdb_url">
+      <img
+        class="h-6 w-14 drop-shadow-md"
+        src="../../../../assets/svg/imdb_logo.svg"
+        alt="imdb logo"
+      />
+    </a>
+  </div>
+</div>

@@ -8,6 +8,8 @@ import { SearchStrategyService } from './search/services/strategy/search-strateg
 import { SearchApiService } from './search/services/api/search-api.service';
 import { SearchReducerService } from './search/services/reducer/search-reducer.service';
 import { SearchStateService } from './search/services/state/search-state.service';
+import { IMovie } from './search/interfaces/movie.interface';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -20,12 +22,14 @@ import { SearchStateService } from './search/services/state/search-state.service
     SearchInputComponent,
     SearchListComponent,
     HttpClientModule,
+    MatDialogModule,
   ],
   providers: [
     SearchStrategyService,
     SearchApiService,
     SearchReducerService,
     SearchStateService,
+    MatDialog,
   ],
 })
 export class AppComponent {
@@ -38,5 +42,9 @@ export class AppComponent {
 
   searchMovie(query: string) {
     this.strategyService.loadMovieSearch(query);
+  }
+
+  selectMovie(movie: IMovie) {
+    this.strategyService.openMovieDetailsModal(movie);
   }
 }

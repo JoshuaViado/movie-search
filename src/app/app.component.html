@@ -13,4 +13,7 @@
   </div>
 </nav>
 
-<ms-search-list [movieList]="movieList$ | async"></ms-search-list>
+<ms-search-list
+  [movieList]="movieList$ | async"
+  (selectMovieEvent)="selectMovie($event)"
+></ms-search-list>
