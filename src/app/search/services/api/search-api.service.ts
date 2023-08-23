@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { IMovieByNameResponse } from '../../interfaces/movie.interface';
+import { Observable, catchError, map, of } from 'rxjs';
+import {
+  IAuthorMovieQuote,
+  IMovieByNameResponse,
+} from '../../interfaces/movie.interface';
 
 @Injectable()
 export class SearchApiService {
@@ -16,5 +19,27 @@ export class SearchApiService {
         'X-RapidAPI-Host': 'imdb-search2.p.rapidapi.com',
       },
     });
+  }
+
+  searchMovieQuotes(): Observable<IAuthorMovieQuote> {
+    const url = `https://api.api-ninjas.com/v1/quotes?category=movies`;
+
+    return this.httpClient
+      .get<IAuthorMovieQuote[]>(url, {
+        headers: {
+          'X-Api-Key': 'a1XYZQXzKIySvwZ+a+sMPA==leQfBHyYfW0z8IsT',
+        },
+      })
+      .pipe(
+        map((res) => res[0]),
+        catchError(() => {
+          return of({
+            quote:
+              "In life and in movies, it's a similar challenge, where you have expectations, and you end up in situations that are not meeting your expectations.",
+            author: 'Jeff Bridges',
+            category: 'movies',
+          });
+        })
+      );
   }
 }

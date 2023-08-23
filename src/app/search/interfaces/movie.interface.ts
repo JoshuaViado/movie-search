@@ -16,3 +16,8 @@ export interface IMovie {
   photo_height: number;
   photo_width: number;
 }
+
+export interface IAuthorMovieQuote {
+  author: string;
+  quote: string;
+}

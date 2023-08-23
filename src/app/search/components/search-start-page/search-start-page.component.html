@@ -1,0 +1,8 @@
+<div class="h-full flex flex-col justify-center items-center">
+  <ms-search-input (searchMovieEvent)="searchMovie($event)"></ms-search-input>
+
+  <div class="text-center m-4">
+    "{{ (movieQuotes$ | async)?.quote }}" - {{ (movieQuotes$ | async)?.author }}
+  </div>
+</div>
+<router-outlet></router-outlet>

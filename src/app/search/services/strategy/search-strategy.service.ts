@@ -39,4 +39,16 @@ export class SearchStrategyService {
       data: movie,
     });
   }
+
+  getMovieQuotes() {
+    this.stateService.setLoading(true);
+    this.apiService
+      .searchMovieQuotes()
+      .pipe(take(1))
+      .subscribe((res) => {
+        console.log(res);
+        this.stateService.setMovieQuote(res);
+        this.stateService.setLoading(false);
+      });
+  }
 }
