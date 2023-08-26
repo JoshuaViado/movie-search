@@ -1,0 +1,22 @@
+<div
+  class="flex items-center justify-center p-4 h-80 w-60 rounded-3xl drop-shadow-2xl"
+  [class.cursor-pointer]="cursorPointer"
+  [ngClass]="{
+    'bg-slate-300': imgLoading,
+    'animate-pulse': imgLoading && posterSrc,
+    'animate-fadein': fadeInAnimation
+  }"
+>
+  <img
+    *ngIf="posterSrc; else Placeholder"
+    [src]="posterSrc"
+    [alt]="posterTitle + ' poster'"
+    class="rounded-2xl"
+    [class.hidden]="imgLoading"
+    (loaded)="imageLoaded()"
+  />
+</div>
+
+<ng-template #Placeholder>
+  <mat-icon aria-label="Movie Icon" fontIcon="movie" class="mb-10"></mat-icon>
+</ng-template>

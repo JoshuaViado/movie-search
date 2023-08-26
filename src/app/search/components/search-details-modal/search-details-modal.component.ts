@@ -2,11 +2,12 @@ import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IMovie } from '../../interfaces/movie.interface';
+import { SearchPosterComponent } from '../search-poster/search-poster.component';
 
 @Component({
   selector: 'ms-search-details-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SearchPosterComponent],
   templateUrl: './search-details-modal.component.html',
   styleUrls: ['./search-details-modal.component.scss'],
 })
