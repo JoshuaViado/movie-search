@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { SearchStateService } from '../state/search-state.service';
 import { SearchApiService } from '../api/search-api.service';
-import { map, take } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
 import { SearchReducerService } from '../reducer/search-reducer.service';
 import { IMovie } from '../../interfaces/movie.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { SearchDetailsModalComponent } from '../../components/search-details-modal/search-details-modal.component';
+import { Params } from '@angular/router';
 
 @Injectable()
 export class SearchStrategyService {
@@ -46,9 +47,16 @@ export class SearchStrategyService {
       .searchMovieQuotes()
       .pipe(take(1))
       .subscribe((res) => {
-        console.log(res);
         this.stateService.setMovieQuote(res);
         this.stateService.setLoading(false);
       });
+  }
+
+  initMainPage(params: Observable<Params>) {
+    params.pipe(take(1)).subscribe((param) => {
+      const query = param['query'];
+      this.stateService.setSearchQuery(query);
+      this.loadMovieSearch(query);
+    });
   }
 }

@@ -5,7 +5,7 @@ import { IAuthorMovieQuote, IMovie } from '../../interfaces/movie.interface';
 @Injectable()
 export class SearchStateService {
   private loading = new BehaviorSubject<boolean>(true);
-  private searchQuery = new BehaviorSubject<string | null>(null);
+  private searchQuery = new BehaviorSubject<string>('');
   private movieList = new BehaviorSubject<IMovie[]>([]);
   private movieQuote = new BehaviorSubject<IAuthorMovieQuote | undefined>(
     undefined
@@ -19,7 +19,7 @@ export class SearchStateService {
     this.loading.next(value);
   }
 
-  getSearchQuery(): Observable<string | null> {
+  getSearchQuery(): Observable<string> {
     return this.searchQuery.asObservable();
   }
 

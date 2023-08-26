@@ -1,8 +1,20 @@
 <div class="h-full flex flex-col justify-center items-center">
+  <mat-icon
+    aria-label="Movie Icon"
+    fontIcon="movie"
+    class="mb-10 animate-bounce hover:animate-spin customIconSize"
+  ></mat-icon>
+  <div class="title text-4xl animate-typing mb-20">
+    I made a movie app because...why not?
+  </div>
   <ms-search-input (searchMovieEvent)="searchMovie($event)"></ms-search-input>
 
-  <div class="text-center m-4">
-    "{{ (movieQuotes$ | async)?.quote }}" - {{ (movieQuotes$ | async)?.author }}
-  </div>
+  <span
+    *ngIf="!(loading$ | async)"
+    class="m-8 mt-12 text-center animate-fadein font-thin text-xl"
+  >
+    "{{ (movieQuotes$ | async)?.quote }}" -
+    <span class="font-bold">{{ (movieQuotes$ | async)?.author }}</span>
+  </span>
 </div>
 <router-outlet></router-outlet>

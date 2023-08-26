@@ -2,11 +2,11 @@
   <input
     matInput
     type="text"
-    [(ngModel)]="value"
-    [placeholder]="'Search Movie Title'"
-    (keydown.enter)="searchMovie(value)"
+    [(ngModel)]="query"
+    [placeholder]="'Type a Movie Title...'"
+    (keydown.enter)="searchMovie(query)"
   />
-  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear">
+  <button *ngIf="query" matSuffix mat-icon-button aria-label="Clear">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>

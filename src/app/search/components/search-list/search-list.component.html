@@ -1,9 +1,13 @@
 <div class="flex flex-wrap justify-center">
-  <div *ngFor="let movie of movieList" class="p-2" (click)="selectMovie(movie)">
+  <div
+    *ngFor="let movie of movieList"
+    class="p-2 cardItem"
+    (click)="selectMovie(movie)"
+  >
     <img
       [src]="movie.img_poster"
       [alt]="movie.aka + ' poster'"
-      class="p-4 h-80 w-60 rounded-3xl drop-shadow-2xl cursor-pointer hover:drop-shadow-none"
+      class="p-4 h-80 w-60 rounded-3xl drop-shadow-2xl cursor-pointer"
     />
     <p class="p-2 w-60 h-12 text-center text-ellipsis overflow-hidden ...">
       {{ movie.aka }}

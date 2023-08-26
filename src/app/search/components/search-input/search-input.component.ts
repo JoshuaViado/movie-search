@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -21,9 +21,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./search-input.component.scss'],
 })
 export class SearchInputComponent {
+  @Input() query: string = '';
   @Output() searchMovieEvent = new EventEmitter<string>();
-
-  value = '';
 
   searchMovie(query: string) {
     this.searchMovieEvent.emit(query);

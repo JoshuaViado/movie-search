@@ -8,7 +8,7 @@ export const APP_ROUTE: Route[] = [
     component: SearchStartPageComponent,
   },
   {
-    path: 'main',
+    path: 'main/:query',
     component: SearchMainPageComponent,
   },
 ];
