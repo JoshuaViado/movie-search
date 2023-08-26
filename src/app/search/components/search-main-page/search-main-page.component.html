@@ -8,6 +8,7 @@
       >Movie
     </a>
     <ms-search-input
+      [disabled]="(loading$ | async)!"
       [query]="(movieQuery$ | async)!"
       (searchMovieEvent)="searchMovie($event)"
     ></ms-search-input>
@@ -15,6 +16,11 @@
 </nav>
 
 <ms-search-list
-  [movieList]="movieList$ | async"
+  *ngIf="!(loading$ | async); else Loading"
+  [movieList]="(movieList$ | async)!"
   (selectMovieEvent)="selectMovie($event)"
 ></ms-search-list>
+
+<ng-template #Loading>
+  <ms-search-loading></ms-search-loading>
+</ng-template>

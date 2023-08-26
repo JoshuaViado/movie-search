@@ -3,6 +3,7 @@
     matInput
     type="text"
     [(ngModel)]="query"
+    [disabled]="disabled"
     [placeholder]="'Type a Movie Title...'"
     (keydown.enter)="searchMovie(query)"
   />

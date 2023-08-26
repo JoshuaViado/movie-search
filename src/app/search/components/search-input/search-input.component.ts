@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchInputComponent {
   @Input() query: string = '';
+  @Input() disabled = false;
   @Output() searchMovieEvent = new EventEmitter<string>();
 
   searchMovie(query: string) {

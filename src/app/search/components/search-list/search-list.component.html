@@ -1,16 +1,22 @@
 <div class="flex flex-wrap justify-center">
-  <div
-    *ngFor="let movie of movieList"
-    class="p-2 cardItem"
-    (click)="selectMovie(movie)"
-  >
-    <img
-      [src]="movie.img_poster"
-      [alt]="movie.aka + ' poster'"
-      class="p-4 h-80 w-60 rounded-3xl drop-shadow-2xl cursor-pointer"
-    />
-    <p class="p-2 w-60 h-12 text-center text-ellipsis overflow-hidden ...">
-      {{ movie.aka }}
-    </p>
-  </div>
+  <ng-container *ngFor="let movie of movieList">
+    <div class="p-2 cardItem" (click)="selectMovie(movie)">
+      <img
+        [src]="movie.img_poster"
+        [alt]="movie.aka + ' poster'"
+        class="p-4 h-80 w-60 rounded-3xl drop-shadow-2xl cursor-pointer"
+        [ngClass]="imgLoading ? 'hidden' : 'visible'"
+        (loaded)="imageLoaded(movieList.length)"
+      />
+      <div *ngIf="imgLoading" class="animate-pulse">
+        <div
+          class="rounded-2xl drop-shadow-2xl bg-slate-300 h-80 w-60 p-4"
+        ></div>
+      </div>
+      <p class="p-2 w-60 h-12 text-center text-ellipsis overflow-hidden ...">
+        {{ movie.aka }}
+      </p>
+    </div>
+    <ng-template #Loading> </ng-template>
+  </ng-container>
 </div>

@@ -1,4 +1,7 @@
-<div class="h-full flex flex-col justify-center items-center">
+<div
+  *ngIf="!(loading$ | async); else Loading"
+  class="h-full flex flex-col justify-center items-center"
+>
   <mat-icon
     aria-label="Movie Icon"
     fontIcon="movie"
@@ -9,12 +12,13 @@
   </div>
   <ms-search-input (searchMovieEvent)="searchMovie($event)"></ms-search-input>
 
-  <span
-    *ngIf="!(loading$ | async)"
-    class="m-8 mt-12 text-center animate-fadein font-thin text-xl"
-  >
+  <span class="m-8 mt-12 text-center animate-fadein font-thin text-xl">
     "{{ (movieQuotes$ | async)?.quote }}" -
     <span class="font-bold">{{ (movieQuotes$ | async)?.author }}</span>
   </span>
 </div>
+
+<ng-template #Loading>
+  <ms-search-loading></ms-search-loading>
+</ng-template>
 <router-outlet></router-outlet>
