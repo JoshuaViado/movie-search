@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SearchInputComponent } from './search/components/search-input/search-input.component';
+import { SearchInputComponent } from './features/search/components/search-input/search-input.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchListComponent } from './search/components/search-list/search-list.component';
-import { SearchStrategyService } from './search/services/strategy/search-strategy.service';
-import { SearchApiService } from './search/services/api/search-api.service';
-import { SearchReducerService } from './search/services/reducer/search-reducer.service';
-import { SearchStateService } from './search/services/state/search-state.service';
-import { IMovie } from './search/interfaces/movie.interface';
+import { SearchListComponent } from './features/search/components/search-list/search-list.component';
+import { SearchStrategyService } from './features/search/services/strategy/search-strategy.service';
+import { SearchApiService } from './features/search/services/api/search-api.service';
+import { SearchReducerService } from './features/search/services/reducer/search-reducer.service';
+import { SearchStateService } from './features/search/services/state/search-state.service';
+import { IMovie } from './features/search/interfaces/movie.interface';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
+import { SearchAuthService } from './shared/services/auth/search-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -23,12 +25,14 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     SearchListComponent,
     HttpClientModule,
     MatDialogModule,
+    OAuthModule,
   ],
   providers: [
     SearchStrategyService,
     SearchApiService,
     SearchReducerService,
     SearchStateService,
+    OAuthService,
     MatDialog,
   ],
 })
@@ -37,7 +41,8 @@ export class AppComponent {
 
   constructor(
     private strategyService: SearchStrategyService,
-    private stateService: SearchStateService
+    private stateService: SearchStateService,
+    private readonly searchAuthService: SearchAuthService
   ) {}
 
   searchMovie(query: string) {

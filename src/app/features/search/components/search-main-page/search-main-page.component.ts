@@ -6,7 +6,7 @@ import { SearchStrategyService } from '../../services/strategy/search-strategy.s
 import { SearchStateService } from '../../services/state/search-state.service';
 import { IMovie } from '../../interfaces/movie.interface';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { SearchLoadingComponent } from '../search-loading/search-loading.component';
+import { SearchLoadingComponent } from '../../../../shared/components/search-loading/search-loading.component';
 
 @Component({
   selector: 'ms-search-main-page',

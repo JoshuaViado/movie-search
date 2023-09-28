@@ -5,7 +5,7 @@ import { Router, RouterModule } from '@angular/router';
 import { SearchStrategyService } from '../../services/strategy/search-strategy.service';
 import { SearchStateService } from '../../services/state/search-state.service';
 import { MatIconModule } from '@angular/material/icon';
-import { SearchLoadingComponent } from '../search-loading/search-loading.component';
+import { SearchLoadingComponent } from '../../../../shared/components/search-loading/search-loading.component';
 
 @Component({
   selector: 'ms-search-start-page',
