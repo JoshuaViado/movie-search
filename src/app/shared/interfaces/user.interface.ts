@@ -1,10 +1,15 @@
 export interface IUser {
-  info: IUserInfo;
-}
-
-export interface IUserInfo {
-  sub: string;
+  id?: string;
   email: string;
   name: string;
-  picture: string;
+  gender: string;
+  status: string;
+}
+
+export interface IFormUser {
+  firstName: string;
+  lastName: string;
+  gender: string;
+  email: string;
+  password: string;
 }

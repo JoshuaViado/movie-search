@@ -7,6 +7,7 @@ import { SearchStateService } from '../../services/state/search-state.service';
 import { IMovie } from '../../interfaces/movie.interface';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SearchLoadingComponent } from '../../../../shared/components/search-loading/search-loading.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'ms-search-main-page',
@@ -17,6 +18,7 @@ import { SearchLoadingComponent } from '../../../../shared/components/search-loa
     SearchListComponent,
     SearchLoadingComponent,
     RouterModule,
+    MatMenuModule,
   ],
   templateUrl: './search-main-page.component.html',
 })
@@ -24,6 +26,7 @@ export class SearchMainPageComponent implements OnInit {
   readonly loading$ = this.stateService.getLoading();
   readonly movieList$ = this.stateService.getMovieList();
   readonly movieQuery$ = this.stateService.getSearchQuery();
+  readonly user$ = this.stateService.getUser();
 
   constructor(
     private strategyService: SearchStrategyService,

@@ -1,22 +1,14 @@
 <div class="flex w-full">
   <ms-search-poster
     class="m-4"
-    [posterSrc]="movie.img_poster"
-    [posterTitle]="movie.aka"
+    [posterSrc]="posterBaseUrl + movie.poster_path"
+    [posterTitle]="movie.title"
   ></ms-search-poster>
   <div class="m-4 pt-8 w-80">
     <p class="text-4xl font-extrabold">
       {{ movie.title }}
     </p>
 
-    <p>Actors: {{ movie.actors }}</p>
-    <p>Year Released: {{ movie.year }}</p>
-    <a class="cursor-pointer" [href]="movie.imdb_url">
-      <img
-        class="h-6 w-14 drop-shadow-md"
-        src="../../../../assets/svg/imdb_logo.svg"
-        alt="imdb logo"
-      />
-    </a>
+    <p>Year Released: {{ movie.release_date }}</p>
   </div>
 </div>

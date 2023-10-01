@@ -14,6 +14,9 @@ import { SearchPosterComponent } from '../search-poster/search-poster.component'
 export class SearchDetailsModalComponent {
   movie: IMovie;
 
+  readonly posterBaseUrl =
+    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2';
+
   constructor(@Inject(MAT_DIALOG_DATA) private data: IMovie) {
     this.movie = this.data;
   }

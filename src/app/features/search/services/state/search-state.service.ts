@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IAuthorMovieQuote, IMovie } from '../../interfaces/movie.interface';
+import {
+  IAuthorMovieQuote,
+  IMovieList,
+} from '../../interfaces/movie.interface';
+import { IUser } from 'src/app/shared/interfaces/user.interface';
 
 @Injectable()
 export class SearchStateService {
   private loading = new BehaviorSubject<boolean>(true);
   private searchQuery = new BehaviorSubject<string>('');
-  private movieList = new BehaviorSubject<IMovie[]>([]);
+  private movieList = new BehaviorSubject<IMovieList | undefined>(undefined);
   private movieQuote = new BehaviorSubject<IAuthorMovieQuote | undefined>(
     undefined
   );
+  private user = new BehaviorSubject<IUser | undefined>(undefined);
 
   getLoading(): Observable<boolean> {
     return this.loading.asObservable();
@@ -27,19 +32,27 @@ export class SearchStateService {
     this.searchQuery.next(value);
   }
 
-  getMovieList(): Observable<IMovie[]> {
-    return this.movieList.asObservable();
-  }
-
-  setMovieList(value: IMovie[]) {
-    this.movieList.next(value);
-  }
-
   getMovieQuote(): Observable<IAuthorMovieQuote | undefined> {
     return this.movieQuote.asObservable();
   }
 
   setMovieQuote(value: IAuthorMovieQuote) {
     this.movieQuote.next(value);
+  }
+
+  getUser(): Observable<IUser | undefined> {
+    return this.user.asObservable();
+  }
+
+  setUser(user: IUser) {
+    this.user.next(user);
+  }
+
+  getMovieList(): Observable<IMovieList | undefined> {
+    return this.movieList.asObservable();
+  }
+
+  setMovieList(movieList: IMovieList) {
+    this.movieList.next(movieList);
   }
 }

@@ -10,8 +10,12 @@ import { SearchReducerService } from './features/search/services/reducer/search-
 import { SearchStateService } from './features/search/services/state/search-state.service';
 import { IMovie } from './features/search/interfaces/movie.interface';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
-import { SearchAuthService } from './shared/services/auth/search-auth.service';
+import { SocialLoginModule } from '@abacritt/angularx-social-login';
+import { LoginPageComponent } from './features/login/components/login-page/login-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginFormComponent } from './features/login/components/login-form/login-form.component';
+import { MatButtonModule } from '@angular/material/button';
+import { UserApiService } from './shared/services/api/user/user-api.service';
 
 @Component({
   selector: 'app-root',
@@ -23,16 +27,21 @@ import { SearchAuthService } from './shared/services/auth/search-auth.service';
     RouterModule,
     SearchInputComponent,
     SearchListComponent,
+    LoginPageComponent,
+    LoginFormComponent,
     HttpClientModule,
     MatDialogModule,
-    OAuthModule,
+    SocialLoginModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatButtonModule,
   ],
   providers: [
     SearchStrategyService,
     SearchApiService,
+    UserApiService,
     SearchReducerService,
     SearchStateService,
-    OAuthService,
     MatDialog,
   ],
 })
@@ -41,8 +50,7 @@ export class AppComponent {
 
   constructor(
     private strategyService: SearchStrategyService,
-    private stateService: SearchStateService,
-    private readonly searchAuthService: SearchAuthService
+    private stateService: SearchStateService
   ) {}
 
   searchMovie(query: string) {

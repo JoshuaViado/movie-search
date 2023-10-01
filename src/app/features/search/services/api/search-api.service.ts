@@ -3,20 +3,21 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 import {
   IAuthorMovieQuote,
-  IMovieByNameResponse,
+  IMovieList,
 } from '../../interfaces/movie.interface';
+import { Endpoints } from 'src/app/shared/enums/endpoint.enum';
 
 @Injectable()
 export class SearchApiService {
   constructor(private httpClient: HttpClient) {}
 
-  searchMovieByName(searchString: string): Observable<IMovieByNameResponse> {
-    const url = `https://imdb-search2.p.rapidapi.com/${searchString}`;
+  searchMovieByName(searchString: string): Observable<IMovieList> {
+    const url = `${Endpoints.MovieDb}/search/movie/query?${searchString}&language=en-US`;
 
-    return this.httpClient.get<IMovieByNameResponse>(url, {
+    return this.httpClient.get<IMovieList>(url, {
       headers: {
-        'X-RapidAPI-Key': '829b03737fmsh3d35d98898c721bp1e339ajsn1255c8da66f7',
-        'X-RapidAPI-Host': 'imdb-search2.p.rapidapi.com',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZjljNDQ5NDJlMWRiNDg3Y2U5OTBkYjNiZjNiMGQ1OSIsInN1YiI6IjY1MTk0ZDMwYzUwYWQyMDBhZDgwYzliOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UjDhcDgBNh6CBao9qYwaW8WQTdqLmy3pQ8gffwEl0Uw',
       },
     });
   }
@@ -41,5 +42,15 @@ export class SearchApiService {
           });
         })
       );
+  }
+
+  getPopularMovies(): Observable<IMovieList> {
+    const url = `${Endpoints.MovieDb}/trending/movie/day?language=en-US`;
+    return this.httpClient.get<IMovieList>(url, {
+      headers: {
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZjljNDQ5NDJlMWRiNDg3Y2U5OTBkYjNiZjNiMGQ1OSIsInN1YiI6IjY1MTk0ZDMwYzUwYWQyMDBhZDgwYzliOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UjDhcDgBNh6CBao9qYwaW8WQTdqLmy3pQ8gffwEl0Uw',
+      },
+    });
   }
 }
