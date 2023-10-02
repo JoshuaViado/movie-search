@@ -8,7 +8,7 @@ describe('MainHeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MainHeaderComponent]
+      imports: [MainHeaderComponent],
     });
     fixture = TestBed.createComponent(MainHeaderComponent);
     component = fixture.componentInstance;

@@ -1,7 +1,9 @@
 <div class="flex w-full">
   <ms-movie-poster
     class="m-4"
-    [posterSrc]="posterBaseUrl + movie.poster_path"
+    [posterSrc]="
+      'https://www.themoviedb.org/t/p/w600_and_h900_bestv2' + movie.poster_path
+    "
     [posterTitle]="movie.title"
   ></ms-movie-poster>
   <div class="m-4 pt-8 w-80">

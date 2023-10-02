@@ -14,9 +14,6 @@ import { MoviePosterComponent } from '../movie-poster/movie-poster.component';
 export class MovieDetailsModalComponent {
   movie: IMovie;
 
-  readonly posterBaseUrl =
-    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2';
-
   constructor(@Inject(MAT_DIALOG_DATA) private data: IMovie) {
     this.movie = this.data;
   }

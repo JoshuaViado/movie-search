@@ -5,7 +5,10 @@
   <ng-container *ngFor="let movie of (movieList$ | async)?.results">
     <div class="p-2 cardItem" (click)="selectMovie(movie)">
       <ms-movie-poster
-        [posterSrc]="posterBaseUrl + movie.poster_path"
+        [posterSrc]="
+          'https://www.themoviedb.org/t/p/w600_and_h900_bestv2' +
+          movie.poster_path
+        "
         [posterTitle]="movie.title"
         [fadeInAnimation]="true"
         [cursorPointer]="true"

@@ -9,19 +9,17 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { MovieDetailsModalComponent } from '../../components/movie-details-modal/movie-details-modal.component';
 import { Router } from '@angular/router';
-import { UserApiService } from 'src/app/shared/services/api/user/user-api.service';
 
 @Injectable()
 export class MovieStrategyService {
   constructor(
     private stateService: MovieStateService,
     private apiService: MovieApiService,
-    private userApiService: UserApiService,
     private dialog: MatDialog,
     private router: Router
   ) {}
 
-  loadMovieMovie(query: string) {
+  getMovieByQuery(query: string) {
     this.stateService.setLoading(true);
     this.apiService
       .searchMovieByName(query)

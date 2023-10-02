@@ -20,4 +20,8 @@ export class LoginStateService {
   getSignUpForm(): Observable<FormGroup> {
     return this.signUpForm.asObservable();
   }
+
+  setSignUpForm(form: FormGroup) {
+    this.signUpForm.next(form);
+  }
 }

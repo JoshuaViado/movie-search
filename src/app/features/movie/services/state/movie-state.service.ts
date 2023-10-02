@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {
-  IAuthorMovieQuote,
-  IMovieList,
-} from '../../../../shared/interfaces/movie.interface';
+import { IMovieList } from '../../../../shared/interfaces/movie.interface';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
 
 @Injectable()
@@ -11,9 +8,6 @@ export class MovieStateService {
   private loading = new BehaviorSubject<boolean>(true);
   private searchQuery = new BehaviorSubject<string>('');
   private movieList = new BehaviorSubject<IMovieList | undefined>(undefined);
-  private movieQuote = new BehaviorSubject<IAuthorMovieQuote | undefined>(
-    undefined
-  );
   private user = new BehaviorSubject<IUser | undefined>(undefined);
 
   getLoading(): Observable<boolean> {
@@ -30,14 +24,6 @@ export class MovieStateService {
 
   setMovieQuery(value: string) {
     this.searchQuery.next(value);
-  }
-
-  getMovieQuote(): Observable<IAuthorMovieQuote | undefined> {
-    return this.movieQuote.asObservable();
-  }
-
-  setMovieQuote(value: IAuthorMovieQuote) {
-    this.movieQuote.next(value);
   }
 
   getUser(): Observable<IUser | undefined> {

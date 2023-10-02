@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieInputComponent } from './movie-search-input.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('MovieInputComponent', () => {
   let component: MovieInputComponent;
@@ -8,7 +9,7 @@ describe('MovieInputComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MovieInputComponent],
+      imports: [MovieInputComponent, NoopAnimationsModule],
     });
     fixture = TestBed.createComponent(MovieInputComponent);
     component = fixture.componentInstance;
@@ -18,5 +19,12 @@ describe('MovieInputComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit movie query', () => {
+    spyOn(component.searchMovieEvent, 'emit');
+
+    component.searchMovie('jaws');
+    expect(component.searchMovieEvent.emit).toHaveBeenCalledWith('jaws');
   });
 });

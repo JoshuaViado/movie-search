@@ -38,7 +38,6 @@ export class AdminPageComponent implements OnInit {
   }
 
   updateTablePage(event: PageEvent) {
-    console.log(event);
     this.strategyService.getPopularMovies(event.pageIndex + 1);
   }
 }

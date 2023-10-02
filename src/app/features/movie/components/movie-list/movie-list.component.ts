@@ -26,9 +26,6 @@ export class MovieListComponent implements OnInit {
   readonly loading$ = this.stateService.getLoading();
   readonly movieList$ = this.stateService.getMovieList();
 
-  readonly posterBaseUrl =
-    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2';
-
   constructor(
     private stateService: MovieStateService,
     private strategyService: MovieStrategyService

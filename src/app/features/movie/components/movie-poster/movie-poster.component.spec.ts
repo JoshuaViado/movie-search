@@ -18,4 +18,9 @@ describe('MoviePosterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set imageLoading to false', () => {
+    component.imageLoaded();
+    expect(component.imgLoading).toBeFalse();
+  });
 });

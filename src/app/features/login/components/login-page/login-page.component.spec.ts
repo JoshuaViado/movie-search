@@ -8,7 +8,11 @@ describe('LoginPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [LoginPageComponent]
+      imports: [LoginPageComponent],
+    }).overrideComponent(LoginPageComponent, {
+      set: {
+        template: '',
+      },
     });
     fixture = TestBed.createComponent(LoginPageComponent);
     component = fixture.componentInstance;
