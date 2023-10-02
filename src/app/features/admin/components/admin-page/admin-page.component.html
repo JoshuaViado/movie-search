@@ -1,0 +1,18 @@
+<div class="text-3xl font-semibold dark:text-gray-900">Admin</div>
+<ng-container *ngIf="!(loading$ | async); else Loading">
+  <div *ngIf="movieList$ | async as movie">
+    <div class="text-2xl font-semibold dark:text-gray-900">Popular Movies</div>
+
+    <ms-popular-movie-table
+      [data]="movie.results"
+      [page]="movie.page"
+      [length]="movie.total_results"
+      [pageSize]="movie.results.length"
+      (tablePageEvent)="updateTablePage($event)"
+    ></ms-popular-movie-table>
+  </div>
+</ng-container>
+
+<ng-template #Loading>
+  <ms-search-loading></ms-search-loading>
+</ng-template>

@@ -23,6 +23,7 @@ import { LoginStrategyService } from '../../services/strategy/login-strategy.ser
     GoogleSigninButtonModule,
     MatSelectModule,
   ],
+  providers: [LoginStateService, LoginStrategyService],
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })

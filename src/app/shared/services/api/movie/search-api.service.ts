@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of } from 'rxjs';
-import {
-  IAuthorMovieQuote,
-  IMovieList,
-} from '../../interfaces/movie.interface';
+import { Observable } from 'rxjs';
+import { IMovieList } from '../../../interfaces/movie.interface';
 import { Endpoints } from 'src/app/shared/enums/endpoint.enum';
 
 @Injectable()
@@ -22,30 +19,8 @@ export class SearchApiService {
     });
   }
 
-  searchMovieQuotes(): Observable<IAuthorMovieQuote> {
-    const url = `https://api.api-ninjas.com/v1/quotes?category=movies`;
-
-    return this.httpClient
-      .get<IAuthorMovieQuote[]>(url, {
-        headers: {
-          'X-Api-Key': 'a1XYZQXzKIySvwZ+a+sMPA==leQfBHyYfW0z8IsT',
-        },
-      })
-      .pipe(
-        map((res) => res[0]),
-        catchError(() => {
-          return of({
-            quote:
-              "In life and in movies, it's a similar challenge, where you have expectations, and you end up in situations that are not meeting your expectations.",
-            author: 'Jeff Bridges',
-            category: 'movies',
-          });
-        })
-      );
-  }
-
-  getPopularMovies(): Observable<IMovieList> {
-    const url = `${Endpoints.MovieDb}/trending/movie/day?language=en-US`;
+  getPopularMovies(page = 1): Observable<IMovieList> {
+    const url = `${Endpoints.MovieDb}/trending/movie/day?language=en-US&page=${page}`;
     return this.httpClient.get<IMovieList>(url, {
       headers: {
         Authorization:

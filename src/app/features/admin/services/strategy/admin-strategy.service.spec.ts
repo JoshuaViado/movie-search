@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SearchReducerService } from './search-reducer.service';
+import { AdminStrategyService } from './admin-strategy.service';
 
-describe('SearchReducerService', () => {
-  let service: SearchReducerService;
+describe('AdminStrategyService', () => {
+  let service: AdminStrategyService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SearchReducerService);
+    service = TestBed.inject(AdminStrategyService);
   });
 
   it('should be created', () => {

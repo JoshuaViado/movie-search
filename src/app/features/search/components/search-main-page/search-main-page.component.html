@@ -2,7 +2,10 @@
   <nav
     class="bg-gradient-to-r from-gray-50 to-white m-4 rounded-md drop-shadow-xl"
   >
-    <div class="flex flex-wrap justify-between p-4">
+    <div
+      *ngIf="user$ | async as user"
+      class="flex flex-wrap justify-between p-4"
+    >
       <a
         class="self-center text-3xl font-semibold whitespace-nowrap dark:text-gray-900"
         [routerLink]="['/']"
@@ -12,10 +15,10 @@
         class="max-w-xs cursor-pointer text-ellipsis overflow-hidden ... self-center text-2xl font-semibold whitespace-nowrap dark:text-gray-900 ml-4"
         [matMenuTriggerFor]="menu"
       >
-        {{ (user$ | async)?.name }}
+        {{ user.name }}
       </div>
       <mat-menu #menu="matMenu" [xPosition]="'before'">
-        <button mat-menu-item>Admin</button>
+        <button mat-menu-item (click)="selectAdmin(user.id!)">Admin</button>
         <button mat-menu-item>Log Out</button>
       </mat-menu>
       <!-- TODO: fix lag issue -->

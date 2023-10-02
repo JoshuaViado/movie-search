@@ -4,10 +4,11 @@ import { SearchInputComponent } from '../search-input/search-input.component';
 import { SearchListComponent } from '../search-list/search-list.component';
 import { SearchStrategyService } from '../../services/strategy/search-strategy.service';
 import { SearchStateService } from '../../services/state/search-state.service';
-import { IMovie } from '../../interfaces/movie.interface';
+import { IMovie } from '../../../../shared/interfaces/movie.interface';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SearchLoadingComponent } from '../../../../shared/components/search-loading/search-loading.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'ms-search-main-page',
@@ -19,7 +20,9 @@ import { MatMenuModule } from '@angular/material/menu';
     SearchLoadingComponent,
     RouterModule,
     MatMenuModule,
+    MatDialogModule,
   ],
+  providers: [SearchStrategyService, SearchStateService],
   templateUrl: './search-main-page.component.html',
 })
 export class SearchMainPageComponent implements OnInit {
@@ -44,5 +47,9 @@ export class SearchMainPageComponent implements OnInit {
 
   selectMovie(movie: IMovie) {
     this.strategyService.openMovieDetailsModal(movie);
+  }
+
+  selectAdmin(id: string) {
+    this.strategyService.navigateToAdmin(id);
   }
 }

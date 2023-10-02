@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IMovie } from '../../interfaces/movie.interface';
+import { IMovie } from '../../../../shared/interfaces/movie.interface';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { SearchPosterComponent } from '../search-poster/search-poster.component';
 

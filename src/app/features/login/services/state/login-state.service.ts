@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class LoginStateService {
   private signUpForm = new BehaviorSubject<FormGroup>(
     new FormGroup({

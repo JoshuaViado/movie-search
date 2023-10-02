@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import {
   IAuthorMovieQuote,
   IMovieList,
-} from '../../interfaces/movie.interface';
+} from '../../../../shared/interfaces/movie.interface';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
 
 @Injectable()
