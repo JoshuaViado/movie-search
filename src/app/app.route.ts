@@ -1,25 +1,34 @@
 import { Route } from '@angular/router';
-import { SearchMainPageComponent } from './features/search/components/search-main-page/search-main-page.component';
-import { LoginPageComponent } from './features/login/components/login-page/login-page.component';
-import { AdminPageComponent } from './features/admin/components/admin-page/admin-page.component';
+import { authGuard } from './shared/guards/auth.guard';
 
 export const APP_ROUTE: Route[] = [
   {
     path: '',
-    component: LoginPageComponent,
+    pathMatch: 'full',
+    redirectTo: 'login',
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import(
+        './features/login/components/login-page/login-page.component'
+      ).then((x) => x.LoginPageComponent),
   },
   {
     path: 'main/:id',
-    component: SearchMainPageComponent,
-    children: [
-      {
-        path: 'admin',
-        component: AdminPageComponent,
-      },
-    ],
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/main/components/main-page/main-page.component').then(
+        (x) => x.MainPageComponent
+      ),
+    loadChildren: () =>
+      import('./features/main/main-routes').then((x) => x.ROUTES),
   },
-  {
-    path: 'admin/:id',
-    component: AdminPageComponent,
-  },
+  // {
+  //   path: 'admin/:id',
+  //   loadComponent: () =>
+  //     import(
+  //       './features/admin/components/admin-page/admin-page.component'
+  //     ).then((x) => x.AdminPageComponent),
+  // },
 ];

@@ -1,5 +1,8 @@
-<div class="flex flex-wrap justify-center">
-  <ng-container *ngFor="let movie of movieList">
+<div
+  *ngIf="!(loading$ | async); else Loading"
+  class="flex flex-wrap justify-center"
+>
+  <ng-container *ngFor="let movie of (movieList$ | async)?.results">
     <div class="p-2 cardItem" (click)="selectMovie(movie)">
       <ms-search-poster
         [posterSrc]="posterBaseUrl + movie.poster_path"
@@ -13,3 +16,7 @@
     </div>
   </ng-container>
 </div>
+
+<ng-template #Loading>
+  <ms-search-loading></ms-search-loading>
+</ng-template>

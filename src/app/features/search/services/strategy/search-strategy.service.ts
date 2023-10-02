@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { SearchStateService } from '../state/search-state.service';
 import { SearchApiService } from '../../../../shared/services/api/movie/search-api.service';
-import { Observable, switchMap, take } from 'rxjs';
+import { take } from 'rxjs';
 import {
   IMovie,
   IMovieList,
 } from '../../../../shared/interfaces/movie.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { SearchDetailsModalComponent } from '../../components/search-details-modal/search-details-modal.component';
-import { Params, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserApiService } from 'src/app/shared/services/api/user/user-api.service';
 
 @Injectable()
@@ -38,19 +38,13 @@ export class SearchStrategyService {
     });
   }
 
-  initMainPage(params: Observable<Params>) {
-    params
-      .pipe(
-        take(1),
-        switchMap((param) => this.userApiService.getUser(param['id'])),
-        switchMap((user) => {
-          this.stateService.setUser(user);
-          return this.apiService.getPopularMovies();
-        })
-      )
-      .subscribe((popularMovies: IMovieList) => {
-        console.log(popularMovies);
-        this.stateService.setMovieList(popularMovies);
+  getPopularMovies() {
+    this.stateService.setLoading(true);
+    this.apiService
+      .getPopularMovies()
+      .pipe(take(1))
+      .subscribe((movies) => {
+        this.stateService.setMovieList(movies);
         this.stateService.setLoading(false);
       });
   }

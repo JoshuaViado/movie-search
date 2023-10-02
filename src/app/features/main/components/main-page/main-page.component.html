@@ -1,0 +1,11 @@
+<ng-container *ngIf="!(loading$ | async); else Loading">
+  <ms-main-header
+    [user]="(user$ | async)!"
+    (selectAdminEvent)="selectAdmin($event)"
+  ></ms-main-header>
+  <router-outlet></router-outlet>
+</ng-container>
+
+<ng-template #Loading>
+  <ms-search-loading></ms-search-loading>
+</ng-template>
