@@ -5,7 +5,7 @@ import { IMovie } from '../../../../shared/interfaces/movie.interface';
 import { MoviePosterComponent } from '../movie-poster/movie-poster.component';
 
 @Component({
-  selector: 'ms-search-details-modal',
+  selector: 'ms-movie-details-modal',
   standalone: true,
   imports: [CommonModule, MoviePosterComponent],
   templateUrl: './movie-details-modal.component.html',

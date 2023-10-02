@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'ms-search-loading',
+  selector: 'ms-movie-loading',
   standalone: true,
   imports: [CommonModule, MatIconModule],
   templateUrl: './search-loading.component.html',

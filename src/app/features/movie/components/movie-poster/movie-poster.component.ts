@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ImageLoadedDirective } from '../../directives/img-loaded.directive';
 
 @Component({
-  selector: 'ms-search-poster',
+  selector: 'ms-movie-poster',
   standalone: true,
   imports: [CommonModule, MatIconModule, ImageLoadedDirective],
   templateUrl: './movie-poster.component.html',

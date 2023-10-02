@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'ms-search-input',
+  selector: 'ms-movie-input',
   standalone: true,
   imports: [
     CommonModule,

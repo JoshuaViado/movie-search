@@ -9,7 +9,7 @@ import { MovieLoadingComponent } from 'src/app/shared/components/search-loading/
 import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'ms-search-list',
+  selector: 'ms-movie-list',
   standalone: true,
   imports: [
     CommonModule,
