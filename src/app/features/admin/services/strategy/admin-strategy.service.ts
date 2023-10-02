@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AdminStateService } from '../state/admin-state.service';
-import { SearchApiService } from 'src/app/shared/services/api/movie/search-api.service';
+import { MovieApiService } from 'src/app/shared/services/api/movie/search-api.service';
 import { take } from 'rxjs';
 
 @Injectable()
 export class AdminStrategyService {
   constructor(
     private stateService: AdminStateService,
-    private movieApiService: SearchApiService
+    private movieApiService: MovieApiService
   ) {}
 
   getPopularMovies(page?: number) {

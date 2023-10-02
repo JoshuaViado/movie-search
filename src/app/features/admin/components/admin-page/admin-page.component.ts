@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdminStateService } from '../../services/state/admin-state.service';
 import { MatTableModule } from '@angular/material/table';
 import { AdminStrategyService } from '../../services/strategy/admin-strategy.service';
-import { SearchLoadingComponent } from 'src/app/shared/components/search-loading/search-loading.component';
+import { MovieLoadingComponent } from 'src/app/shared/components/search-loading/search-loading.component';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { PopularMovieTableComponent } from '../popular-movie-table/popular-movie-table.component';
@@ -14,7 +14,7 @@ import { PopularMovieTableComponent } from '../popular-movie-table/popular-movie
   imports: [
     CommonModule,
     MatTableModule,
-    SearchLoadingComponent,
+    MovieLoadingComponent,
     MatPaginatorModule,
     PopularMovieTableComponent,
   ],

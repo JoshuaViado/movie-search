@@ -5,7 +5,7 @@ import { IMovieList } from '../../../interfaces/movie.interface';
 import { Endpoints } from 'src/app/shared/enums/endpoint.enum';
 
 @Injectable()
-export class SearchApiService {
+export class MovieApiService {
   constructor(private httpClient: HttpClient) {}
 
   searchMovieByName(searchString: string): Observable<IMovieList> {

@@ -9,4 +9,4 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './search-loading.component.html',
   styleUrls: ['./search-loading.component.scss'],
 })
-export class SearchLoadingComponent {}
+export class MovieLoadingComponent {}

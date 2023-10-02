@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IMovie } from '../../../../shared/interfaces/movie.interface';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { SearchPosterComponent } from '../search-poster/search-poster.component';
-import { SearchStateService } from '../../services/state/search-state.service';
-import { SearchStrategyService } from '../../services/strategy/search-strategy.service';
-import { SearchLoadingComponent } from 'src/app/shared/components/search-loading/search-loading.component';
+import { MoviePosterComponent } from '../movie-poster/movie-poster.component';
+import { MovieStateService } from '../../services/state/movie-state.service';
+import { MovieStrategyService } from '../../services/strategy/search-strategy.service';
+import { MovieLoadingComponent } from 'src/app/shared/components/search-loading/search-loading.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
@@ -13,16 +13,16 @@ import { MatDialogModule } from '@angular/material/dialog';
   standalone: true,
   imports: [
     CommonModule,
-    SearchPosterComponent,
+    MoviePosterComponent,
     MatGridListModule,
-    SearchLoadingComponent,
+    MovieLoadingComponent,
     MatDialogModule,
   ],
-  providers: [SearchStateService, SearchStrategyService],
-  templateUrl: './search-list.component.html',
-  styleUrls: ['./search-list.component.scss'],
+  providers: [MovieStateService, MovieStrategyService],
+  templateUrl: './movie-list.component.html',
+  styleUrls: ['./movie-list.component.scss'],
 })
-export class SearchListComponent implements OnInit {
+export class MovieListComponent implements OnInit {
   readonly loading$ = this.stateService.getLoading();
   readonly movieList$ = this.stateService.getMovieList();
 
@@ -30,8 +30,8 @@ export class SearchListComponent implements OnInit {
     'https://www.themoviedb.org/t/p/w600_and_h900_bestv2';
 
   constructor(
-    private stateService: SearchStateService,
-    private strategyService: SearchStrategyService
+    private stateService: MovieStateService,
+    private strategyService: MovieStrategyService
   ) {}
 
   ngOnInit(): void {

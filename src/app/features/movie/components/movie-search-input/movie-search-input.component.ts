@@ -17,10 +17,10 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     FormsModule,
   ],
-  templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.scss'],
+  templateUrl: './movie-search-input.component.html',
+  styleUrls: ['./movie-search-input.component.scss'],
 })
-export class SearchInputComponent {
+export class MovieInputComponent {
   @Input() query: string = '';
   @Input() disabled = false;
   @Output() searchMovieEvent = new EventEmitter<string>();

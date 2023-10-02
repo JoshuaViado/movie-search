@@ -2,16 +2,16 @@ import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IMovie } from '../../../../shared/interfaces/movie.interface';
-import { SearchPosterComponent } from '../search-poster/search-poster.component';
+import { MoviePosterComponent } from '../movie-poster/movie-poster.component';
 
 @Component({
   selector: 'ms-search-details-modal',
   standalone: true,
-  imports: [CommonModule, SearchPosterComponent],
-  templateUrl: './search-details-modal.component.html',
-  styleUrls: ['./search-details-modal.component.scss'],
+  imports: [CommonModule, MoviePosterComponent],
+  templateUrl: './movie-details-modal.component.html',
+  styleUrls: ['./movie-details-modal.component.scss'],
 })
-export class SearchDetailsModalComponent {
+export class MovieDetailsModalComponent {
   movie: IMovie;
 
   readonly posterBaseUrl =

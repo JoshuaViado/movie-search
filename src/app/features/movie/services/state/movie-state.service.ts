@@ -7,7 +7,7 @@ import {
 import { IUser } from 'src/app/shared/interfaces/user.interface';
 
 @Injectable()
-export class SearchStateService {
+export class MovieStateService {
   private loading = new BehaviorSubject<boolean>(true);
   private searchQuery = new BehaviorSubject<string>('');
   private movieList = new BehaviorSubject<IMovieList | undefined>(undefined);
@@ -24,11 +24,11 @@ export class SearchStateService {
     this.loading.next(value);
   }
 
-  getSearchQuery(): Observable<string> {
+  getMovieQuery(): Observable<string> {
     return this.searchQuery.asObservable();
   }
 
-  setSearchQuery(value: string) {
+  setMovieQuery(value: string) {
     this.searchQuery.next(value);
   }
 

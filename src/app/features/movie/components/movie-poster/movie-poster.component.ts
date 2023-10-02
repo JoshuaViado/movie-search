@@ -7,10 +7,10 @@ import { ImageLoadedDirective } from '../../directives/img-loaded.directive';
   selector: 'ms-search-poster',
   standalone: true,
   imports: [CommonModule, MatIconModule, ImageLoadedDirective],
-  templateUrl: './search-poster.component.html',
-  styleUrls: ['./search-poster.component.scss'],
+  templateUrl: './movie-poster.component.html',
+  styleUrls: ['./movie-poster.component.scss'],
 })
-export class SearchPosterComponent {
+export class MoviePosterComponent {
   @Input() posterSrc!: string;
   @Input() posterTitle!: string;
   @Input() fadeInAnimation = false;

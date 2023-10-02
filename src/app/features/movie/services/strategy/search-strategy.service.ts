@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
-import { SearchStateService } from '../state/search-state.service';
-import { SearchApiService } from '../../../../shared/services/api/movie/search-api.service';
+import { MovieStateService } from '../state/movie-state.service';
+import { MovieApiService } from '../../../../shared/services/api/movie/search-api.service';
 import { take } from 'rxjs';
 import {
   IMovie,
   IMovieList,
 } from '../../../../shared/interfaces/movie.interface';
 import { MatDialog } from '@angular/material/dialog';
-import { SearchDetailsModalComponent } from '../../components/search-details-modal/search-details-modal.component';
+import { MovieDetailsModalComponent } from '../../components/movie-details-modal/movie-details-modal.component';
 import { Router } from '@angular/router';
 import { UserApiService } from 'src/app/shared/services/api/user/user-api.service';
 
 @Injectable()
-export class SearchStrategyService {
+export class MovieStrategyService {
   constructor(
-    private stateService: SearchStateService,
-    private apiService: SearchApiService,
+    private stateService: MovieStateService,
+    private apiService: MovieApiService,
     private userApiService: UserApiService,
     private dialog: MatDialog,
     private router: Router
   ) {}
 
-  loadMovieSearch(query: string) {
+  loadMovieMovie(query: string) {
     this.stateService.setLoading(true);
     this.apiService
       .searchMovieByName(query)
@@ -33,7 +33,7 @@ export class SearchStrategyService {
   }
 
   openMovieDetailsModal(movie: IMovie) {
-    this.dialog.open(SearchDetailsModalComponent, {
+    this.dialog.open(MovieDetailsModalComponent, {
       data: movie,
     });
   }

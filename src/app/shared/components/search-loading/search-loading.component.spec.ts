@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchLoadingComponent } from './search-loading.component';
+import { MovieLoadingComponent } from './search-loading.component';
 
-describe('SearchLoadingComponent', () => {
-  let component: SearchLoadingComponent;
-  let fixture: ComponentFixture<SearchLoadingComponent>;
+describe('MovieLoadingComponent', () => {
+  let component: MovieLoadingComponent;
+  let fixture: ComponentFixture<MovieLoadingComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SearchLoadingComponent]
+      imports: [MovieLoadingComponent],
     });
-    fixture = TestBed.createComponent(SearchLoadingComponent);
+    fixture = TestBed.createComponent(MovieLoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
