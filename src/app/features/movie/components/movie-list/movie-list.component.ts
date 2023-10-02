@@ -4,7 +4,7 @@ import { IMovie } from '../../../../shared/interfaces/movie.interface';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MoviePosterComponent } from '../movie-poster/movie-poster.component';
 import { MovieStateService } from '../../services/state/movie-state.service';
-import { MovieStrategyService } from '../../services/strategy/search-strategy.service';
+import { MovieStrategyService } from '../../services/strategy/movie-strategy.service';
 import { MovieLoadingComponent } from 'src/app/shared/components/search-loading/search-loading.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
