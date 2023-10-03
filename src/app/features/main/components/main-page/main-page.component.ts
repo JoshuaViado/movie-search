@@ -33,7 +33,11 @@ export class MainPageComponent {
     this.strategyService.initMainPage(this.route.params);
   }
 
-  selectAdmin(id: string) {
-    this.strategyService.navigateToAdmin(id);
+  selectAdmin() {
+    this.strategyService.navigateToAdmin();
+  }
+
+  selectSignOut() {
+    this.strategyService.signOut();
   }
 }

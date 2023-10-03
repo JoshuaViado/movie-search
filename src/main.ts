@@ -8,12 +8,40 @@ import { provideRouter } from '@angular/router';
 import { APP_ROUTE } from './app/app.route';
 import { SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { importProvidersFrom } from '@angular/core';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(APP_ROUTE),
     provideHttpClient(),
     provideAnimations(),
+    importProvidersFrom(
+      provideFirebaseApp(() =>
+        initializeApp({
+          apiKey: 'AIzaSyDEpySqtwpRbnv_HEtMlj8JM7qDgV49Sig',
+          authDomain: 'movie-search-62fe6.firebaseapp.com',
+          projectId: 'movie-search-62fe6',
+          storageBucket: 'movie-search-62fe6.appspot.com',
+          messagingSenderId: '503461826304',
+          appId: '1:503461826304:web:d9a013a8625d37d1152de5',
+        })
+      )
+    ),
+    importProvidersFrom(provideAuth(() => getAuth())),
+    {
+      provide: FIREBASE_OPTIONS,
+      useValue: {
+        apiKey: 'AIzaSyDEpySqtwpRbnv_HEtMlj8JM7qDgV49Sig',
+        authDomain: 'movie-search-62fe6.firebaseapp.com',
+        projectId: 'movie-search-62fe6',
+        storageBucket: 'movie-search-62fe6.appspot.com',
+        messagingSenderId: '503461826304',
+        appId: '1:503461826304:web:d9a013a8625d37d1152de5',
+      },
+    },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

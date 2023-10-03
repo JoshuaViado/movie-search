@@ -6,9 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
-import { Genders } from 'src/app/shared/enums/user.enum';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginStrategyService } from '../../services/strategy/login-strategy.service';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'ms-login-form',
@@ -22,6 +22,7 @@ import { LoginStrategyService } from '../../services/strategy/login-strategy.ser
     MatFormFieldModule,
     GoogleSigninButtonModule,
     MatSelectModule,
+    AngularFireAuthModule,
   ],
   providers: [LoginStateService, LoginStrategyService],
   templateUrl: './login-form.component.html',
@@ -29,15 +30,18 @@ import { LoginStrategyService } from '../../services/strategy/login-strategy.ser
 })
 export class LoginFormComponent {
   signUpForm$ = this.loginStateService.getSignUpForm();
-
-  readonly genders = Genders;
+  showSignIn$ = this.loginStateService.getShowSignIn();
 
   constructor(
     private readonly loginStateService: LoginStateService,
     private readonly loginStrategyService: LoginStrategyService
   ) {}
 
-  onSubmit(form: FormGroup) {
-    this.loginStrategyService.signUpUser(form.value);
+  toggleSignIn(value: boolean) {
+    this.loginStrategyService.toggleSignIn(value);
+  }
+
+  onSubmit(form: FormGroup, isSignIn: boolean) {
+    this.loginStrategyService.logInUser(form.value, isSignIn);
   }
 }

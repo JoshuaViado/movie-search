@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IUser } from 'src/app/shared/interfaces/user.interface';
-
+import { User } from '@firebase/auth-types';
 @Injectable({
   providedIn: 'root',
 })
 export class MainStateService {
   private loading = new BehaviorSubject<boolean>(true);
-  private user = new BehaviorSubject<IUser | undefined>(undefined);
+  private user = new BehaviorSubject<User | undefined>(undefined);
 
   getLoading(): Observable<boolean> {
     return this.loading.asObservable();
@@ -17,11 +16,11 @@ export class MainStateService {
     this.loading.next(value);
   }
 
-  getUser(): Observable<IUser | undefined> {
+  getUser(): Observable<User | undefined> {
     return this.user.asObservable();
   }
 
-  setUser(user: IUser) {
+  setUser(user: User) {
     this.user.next(user);
   }
 }

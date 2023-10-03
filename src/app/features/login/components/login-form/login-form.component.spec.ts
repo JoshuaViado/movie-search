@@ -14,6 +14,7 @@ describe('LoginFormComponent', () => {
 
   let loginStateServiceSpy = jasmine.createSpyObj('LoginStateService', [
     'getSignUpForm',
+    'getShowSignIn',
   ]);
 
   beforeEach(() => {
@@ -21,6 +22,7 @@ describe('LoginFormComponent', () => {
       imports: [LoginFormComponent],
     }).overrideComponent(LoginFormComponent, {
       set: {
+        template: '',
         providers: [
           {
             provide: LoginStrategyService,

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
-import { IUser } from 'src/app/shared/interfaces/user.interface';
+import { User } from '@firebase/auth-types';
 
 @Component({
   selector: 'ms-main-header',
@@ -12,10 +12,15 @@ import { IUser } from 'src/app/shared/interfaces/user.interface';
   styleUrls: ['./main-header.component.scss'],
 })
 export class MainHeaderComponent {
-  @Input() user!: IUser;
-  @Output() selectAdminEvent = new EventEmitter<string>();
+  @Input() user!: User;
+  @Output() selectAdminEvent = new EventEmitter<void>();
+  @Output() selectSignOutEvent = new EventEmitter<void>();
 
-  selectAdmin(id: string) {
-    this.selectAdminEvent.emit(id);
+  selectAdmin() {
+    this.selectAdminEvent.emit();
+  }
+
+  selectSignOut() {
+    this.selectSignOutEvent.emit();
   }
 }

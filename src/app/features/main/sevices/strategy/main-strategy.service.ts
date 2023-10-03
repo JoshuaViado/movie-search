@@ -1,30 +1,49 @@
 import { Injectable } from '@angular/core';
 import { Params, Router } from '@angular/router';
-import { Observable, switchMap, take } from 'rxjs';
-import { UserApiService } from 'src/app/shared/services/api/user/user-api.service';
+import { Observable, map, take } from 'rxjs';
 import { MainStateService } from '../state/main-state.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Injectable()
 export class MainStrategyService {
   constructor(
-    private userApiService: UserApiService,
     private stateService: MainStateService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
   initMainPage(params: Observable<Params>) {
-    params
+    this.authService
+      .getUser()
       .pipe(
-        take(1),
-        switchMap((param) => this.userApiService.getUser(param['id']))
+        map((user) => {
+          if (user !== null) {
+            return user;
+          } else {
+            this.router.navigate(['./login']);
+            return;
+          }
+        })
       )
       .subscribe((user) => {
-        this.stateService.setUser(user);
-        this.stateService.setLoading(false);
+        if (user) {
+          this.stateService.setUser(user);
+          this.stateService.setLoading(false);
+        }
       });
   }
 
-  navigateToAdmin(id: string) {
-    this.router.navigate(['./main', id, 'admin']);
+  navigateToAdmin() {
+    this.router.navigate(['./main/admin']);
+  }
+
+  signOut() {
+    this.authService
+      .signOut()
+      .pipe(take(1))
+      .subscribe(() => {
+        console.log('test');
+        this.router.navigate(['./login']);
+      });
   }
 }

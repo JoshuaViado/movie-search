@@ -4,18 +4,18 @@
   <div *ngIf="user" class="flex flex-wrap justify-between p-4">
     <a
       class="self-center text-3xl font-semibold whitespace-nowrap dark:text-gray-900"
-      [routerLink]="['/main', user.id, 'movies']"
+      [routerLink]="['/main/movies']"
       >Movie
     </a>
     <div
       class="max-w-xs cursor-pointer text-ellipsis overflow-hidden ... self-center text-2xl font-semibold whitespace-nowrap dark:text-gray-900 ml-4"
       [matMenuTriggerFor]="menu"
     >
-      {{ user.name }}
+      {{ user.displayName }}
     </div>
     <mat-menu #menu="matMenu" [xPosition]="'before'">
-      <button mat-menu-item (click)="selectAdmin(user.id!)">Admin</button>
-      <button mat-menu-item>Log Out</button>
+      <button mat-menu-item (click)="selectAdmin()">Admin</button>
+      <button mat-menu-item (click)="selectSignOut()">Log Out</button>
     </mat-menu>
     <!-- TODO: fix lag issue -->
     <!-- <ms-movie-input

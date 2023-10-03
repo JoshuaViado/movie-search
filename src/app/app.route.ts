@@ -15,7 +15,7 @@ export const APP_ROUTE: Route[] = [
       ).then((x) => x.LoginPageComponent),
   },
   {
-    path: 'main/:id',
+    path: 'main',
     canActivate: [authGuard],
     loadComponent: () =>
       import('./features/main/components/main-page/main-page.component').then(

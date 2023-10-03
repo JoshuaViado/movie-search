@@ -1,14 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
 import { LoginStrategyService } from './login-strategy.service';
-import { UserApiService } from 'src/app/shared/services/api/user/user-api.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { LoginStateService } from '../state/login-state.service';
 
 describe('LoginStrategyService', () => {
   let service: LoginStrategyService;
 
-  let userApiServiceSpy = jasmine.createSpyObj('UserApiService', [
-    'signUpUser',
+  let authServiceSpy = jasmine.createSpyObj('AuthService', ['signUp']);
+  let loginStateServiceSpy = jasmine.createSpyObj('LoginStateService', [
+    'getSignUpForm',
+    'getShowSignIn',
   ]);
 
   let routerSpy = jasmine.createSpyObj('Router', ['navigate']);
@@ -18,8 +21,12 @@ describe('LoginStrategyService', () => {
       providers: [
         LoginStrategyService,
         {
-          provide: UserApiService,
-          useValue: userApiServiceSpy,
+          provide: AuthService,
+          useValue: authServiceSpy,
+        },
+        {
+          provide: LoginStateService,
+          useValue: loginStateServiceSpy,
         },
         { provide: Router, useValue: routerSpy },
       ],
