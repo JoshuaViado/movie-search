@@ -5,7 +5,6 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginStrategyService } from '../../services/strategy/login-strategy.service';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -20,7 +19,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    GoogleSigninButtonModule,
     MatSelectModule,
     AngularFireAuthModule,
   ],
@@ -43,5 +41,9 @@ export class LoginFormComponent {
 
   onSubmit(form: FormGroup, isSignIn: boolean) {
     this.loginStrategyService.logInUser(form.value, isSignIn);
+  }
+
+  googleSSO() {
+    this.loginStrategyService.googleSSO();
   }
 }

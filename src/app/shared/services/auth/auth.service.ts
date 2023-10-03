@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserCredential, User } from '@firebase/auth-types';
 import { IFormUser } from '../../interfaces/user.interface';
 import { Observable, from, tap } from 'rxjs';
+import { GoogleAuthProvider } from '@angular/fire/auth';
 
 @Injectable()
 export class AuthService {
@@ -24,6 +25,10 @@ export class AuthService {
     return from(
       this.authService.signInWithEmailAndPassword(user.email, user.password)
     );
+  }
+
+  googleSSO(): Observable<UserCredential> {
+    return from(this.authService.signInWithPopup(new GoogleAuthProvider()));
   }
 
   getUser(): Observable<User | null> {

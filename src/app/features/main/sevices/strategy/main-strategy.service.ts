@@ -42,7 +42,6 @@ export class MainStrategyService {
       .signOut()
       .pipe(take(1))
       .subscribe(() => {
-        console.log('test');
         this.router.navigate(['./login']);
       });
   }

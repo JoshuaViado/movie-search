@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { take } from 'rxjs';
 import { IFormUser } from 'src/app/shared/interfaces/user.interface';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LoginStateService } from '../state/login-state.service';
@@ -27,16 +26,23 @@ export class LoginStrategyService {
 
   logInUser(user: IFormUser, isSignIn: boolean) {
     if (isSignIn) {
-      this.authService
-        .signIn(user)
-        .pipe(take(1))
-        .subscribe(() => {
-          this.router.navigate(['./main/movies']);
-        });
+      this.authService.signIn(user).subscribe(() => {
+        this.navigateToMain();
+      });
     } else {
       this.authService.signUp(user).subscribe(() => {
-        this.router.navigate(['./main/movies']);
+        this.navigateToMain();
       });
     }
+  }
+
+  googleSSO() {
+    this.authService.googleSSO().subscribe(() => {
+      this.navigateToMain();
+    });
+  }
+
+  private navigateToMain() {
+    this.router.navigate(['./main/movies']);
   }
 }
