@@ -7,7 +7,12 @@ import { MoviePosterComponent } from '../movie-poster/movie-poster.component';
 @Component({
   selector: 'ms-movie-details-modal',
   standalone: true,
-  imports: [CommonModule, MoviePosterComponent],
+  imports: [
+    CommonModule,
+
+    // Components
+    MoviePosterComponent,
+  ],
   templateUrl: './movie-details-modal.component.html',
   styleUrls: ['./movie-details-modal.component.scss'],
 })

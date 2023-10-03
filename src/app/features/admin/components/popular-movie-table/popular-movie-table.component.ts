@@ -16,7 +16,14 @@ import { IMovie } from 'src/app/shared/interfaces/movie.interface';
 @Component({
   selector: 'ms-popular-movie-table',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule],
+  imports: [
+    CommonModule,
+
+    // Angular Material
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+  ],
   templateUrl: './popular-movie-table.component.html',
   styleUrls: ['./popular-movie-table.component.scss'],
 })

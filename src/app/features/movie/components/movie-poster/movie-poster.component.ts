@@ -6,7 +6,14 @@ import { ImageLoadedDirective } from '../../directives/img-loaded.directive';
 @Component({
   selector: 'ms-movie-poster',
   standalone: true,
-  imports: [CommonModule, MatIconModule, ImageLoadedDirective],
+  imports: [
+    CommonModule,
+
+    // Angular Material
+    MatIconModule,
+
+    ImageLoadedDirective,
+  ],
   templateUrl: './movie-poster.component.html',
   styleUrls: ['./movie-poster.component.scss'],
 })

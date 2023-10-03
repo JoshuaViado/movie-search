@@ -11,11 +11,13 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
+
+    // Angular Material
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    FormsModule,
   ],
   templateUrl: './movie-search-input.component.html',
   styleUrls: ['./movie-search-input.component.scss'],

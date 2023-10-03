@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Params, Router } from '@angular/router';
-import { Observable, map, take } from 'rxjs';
+import { Router } from '@angular/router';
+import { map, take } from 'rxjs';
 import { MainStateService } from '../state/main-state.service';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
@@ -12,7 +12,7 @@ export class MainStrategyService {
     private router: Router
   ) {}
 
-  initMainPage(params: Observable<Params>) {
+  initMainPage() {
     this.authService
       .getUser()
       .pipe(

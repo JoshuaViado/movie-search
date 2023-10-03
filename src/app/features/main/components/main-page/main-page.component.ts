@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainStrategyService } from '../../sevices/strategy/main-strategy.service';
 import { MainStateService } from '../../sevices/state/main-state.service';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MainHeaderComponent } from '../main-header/main-header.component';
 import { MovieLoadingComponent } from 'src/app/shared/components/search-loading/search-loading.component';
 
@@ -11,8 +11,10 @@ import { MovieLoadingComponent } from 'src/app/shared/components/search-loading/
   standalone: true,
   imports: [
     CommonModule,
-    MainHeaderComponent,
     RouterModule,
+
+    // Components
+    MainHeaderComponent,
     MovieLoadingComponent,
   ],
   providers: [MainStrategyService, MainStateService],
@@ -25,12 +27,11 @@ export class MainPageComponent {
 
   constructor(
     private strategyService: MainStrategyService,
-    private stateService: MainStateService,
-    private route: ActivatedRoute
+    private stateService: MainStateService
   ) {}
 
   ngOnInit(): void {
-    this.strategyService.initMainPage(this.route.params);
+    this.strategyService.initMainPage();
   }
 
   selectAdmin() {

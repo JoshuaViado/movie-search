@@ -5,7 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'ms-movie-loading',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [
+    CommonModule,
+
+    // Angular Material
+    MatIconModule,
+  ],
   templateUrl: './search-loading.component.html',
   styleUrls: ['./search-loading.component.scss'],
 })

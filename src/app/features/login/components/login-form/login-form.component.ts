@@ -16,10 +16,13 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+
+    // Angular Material
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+
     AngularFireAuthModule,
   ],
   providers: [LoginStateService, LoginStrategyService],

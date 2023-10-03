@@ -13,10 +13,14 @@ import { MatDialogModule } from '@angular/material/dialog';
   standalone: true,
   imports: [
     CommonModule,
-    MoviePosterComponent,
+
+    // Angular Material
     MatGridListModule,
-    MovieLoadingComponent,
     MatDialogModule,
+
+    // Components
+    MoviePosterComponent,
+    MovieLoadingComponent,
   ],
   providers: [MovieStateService, MovieStrategyService],
   templateUrl: './movie-list.component.html',

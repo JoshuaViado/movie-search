@@ -7,7 +7,13 @@ import { User } from '@firebase/auth-types';
 @Component({
   selector: 'ms-main-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatMenuModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+
+    // Angular Material
+    MatMenuModule,
+  ],
   templateUrl: './main-header.component.html',
   styleUrls: ['./main-header.component.scss'],
 })

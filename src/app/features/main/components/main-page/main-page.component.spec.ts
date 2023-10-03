@@ -3,8 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainPageComponent } from './main-page.component';
 import { MainStateService } from '../../sevices/state/main-state.service';
 import { MainStrategyService } from '../../sevices/strategy/main-strategy.service';
-import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
 
 describe('MainPageComponent', () => {
   let component: MainPageComponent;
@@ -20,10 +18,6 @@ describe('MainPageComponent', () => {
     'getUser',
   ]);
 
-  let activatedRouteFake = {
-    params: of({ id: 123 }),
-  };
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [MainPageComponent],
@@ -32,7 +26,6 @@ describe('MainPageComponent', () => {
         providers: [
           { provide: MainStateService, useValue: mainStateServiceSpy },
           { provide: MainStrategyService, useValue: mainStrategyService },
-          { provide: ActivatedRoute, useValue: activatedRouteFake },
         ],
       },
     });
